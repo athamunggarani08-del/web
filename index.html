@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Athuy Chat 💌</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #E6E6FA 0%, #DDA0DD 50%, #DA70D6 100%);
+            min-height: 100vh;
+        }
+        
+        .sparkle {
+            animation: sparkle 2s infinite;
+        }
+        
+        @keyframes sparkle {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.2); }
+        }
+        
+        .float {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .butterfly {
+            animation: butterfly 4s ease-in-out infinite;
+        }
+        
+        @keyframes butterfly {
+            0%, 100% { transform: translateX(0px) rotate(0deg); }
+            25% { transform: translateX(10px) rotate(5deg); }
+            75% { transform: translateX(-10px) rotate(-5deg); }
+        }
+        
+        .chat-bubble-user {
+            background: linear-gradient(135deg, #FF69B4, #FFB6C1);
+            border-radius: 20px 20px 5px 20px;
+        }
+        
+        .chat-bubble-ai {
+            background: linear-gradient(135deg, #E6E6FA, #DDA0DD);
+            border-radius: 20px 20px 20px 5px;
+        }
+        
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+    </style>
+</head>
+<body class="overflow-hidden">
+    <!-- Background Decorations -->
+    <div class="fixed inset-0 pointer-events-none">
+        <!-- Floating Flowers -->
+        <div class="absolute top-10 left-10 text-4xl float">🌸</div>
+        <div class="absolute top-20 right-20 text-3xl float" style="animation-delay: 0.5s;">🌺</div>
+        <div class="absolute bottom-20 left-20 text-3xl float" style="animation-delay: 1s;">🌷</div>
+        <div class="absolute bottom-10 right-10 text-4xl float" style="animation-delay: 1.5s;">🌹</div>
+        <div class="absolute top-40 left-1/2 text-3xl float" style="animation-delay: 2.2s;">🌻</div>
+        <div class="absolute bottom-60 right-1/4 text-3xl float" style="animation-delay: 2.8s;">🌼</div>
+        
+        <!-- Butterflies -->
+        <div class="absolute top-32 left-1/4 text-2xl butterfly">🦋</div>
+        <div class="absolute top-40 right-1/3 text-2xl butterfly" style="animation-delay: 1s;">🦋</div>
+        <div class="absolute bottom-80 left-1/3 text-2xl butterfly" style="animation-delay: 2.5s;">🦋</div>
+        
+        <!-- Sparkles -->
+        <div class="absolute top-16 left-1/3 text-xl sparkle">✨</div>
+        <div class="absolute top-60 right-1/4 text-xl sparkle" style="animation-delay: 0.7s;">✨</div>
+        <div class="absolute bottom-32 left-1/2 text-xl sparkle" style="animation-delay: 1.4s;">✨</div>
+        <div class="absolute top-80 left-16 text-xl sparkle" style="animation-delay: 2s;">✨</div>
+        <div class="absolute top-72 right-12 text-xl sparkle" style="animation-delay: 2.7s;">✨</div>
+        <div class="absolute bottom-16 left-1/4 text-xl sparkle" style="animation-delay: 3.2s;">✨</div>
+        
+        <!-- Hearts -->
+        <div class="absolute top-24 right-16 text-2xl float" style="animation-delay: 0.3s;">💖</div>
+        <div class="absolute bottom-40 right-32 text-2xl float" style="animation-delay: 1.2s;">💕</div>
+        <div class="absolute top-96 left-32 text-2xl float" style="animation-delay: 0.8s;">💗</div>
+        <div class="absolute top-52 right-40 text-2xl float" style="animation-delay: 1.8s;">💜</div>
+        <div class="absolute bottom-72 left-12 text-2xl float" style="animation-delay: 2.4s;">💙</div>
+        
+        <!-- Unicorns and Magic -->
+        <div class="absolute top-28 left-2/3 text-3xl float" style="animation-delay: 1.6s;">🦄</div>
+        <div class="absolute bottom-28 right-1/3 text-3xl float" style="animation-delay: 3s;">🦄</div>
+        
+        <!-- Stars and Moon -->
+        <div class="absolute top-12 left-1/2 text-2xl sparkle" style="animation-delay: 0.9s;">⭐</div>
+        <div class="absolute top-64 right-8 text-2xl sparkle" style="animation-delay: 1.7s;">🌟</div>
+        <div class="absolute bottom-48 left-8 text-2xl float" style="animation-delay: 2.1s;">🌙</div>
+        <div class="absolute top-88 right-1/2 text-2xl sparkle" style="animation-delay: 2.9s;">💫</div>
+        
+        <!-- Cute Animals -->
+        <div class="absolute top-44 left-8 text-2xl float" style="animation-delay: 1.3s;">🐱</div>
+        <div class="absolute bottom-52 right-16 text-2xl float" style="animation-delay: 2.6s;">🐰</div>
+        <div class="absolute top-76 left-1/3 text-2xl float" style="animation-delay: 3.1s;">🐼</div>
+        
+        <!-- Rainbow and Clouds -->
+        <div class="absolute top-36 right-1/4 text-2xl float" style="animation-delay: 1.9s;">🌈</div>
+        <div class="absolute bottom-36 left-1/4 text-2xl float" style="animation-delay: 2.3s;">☁️</div>
+        
+        <!-- Gems and Crystals -->
+        <div class="absolute top-68 left-4 text-xl sparkle" style="animation-delay: 1.1s;">💎</div>
+        <div class="absolute bottom-24 right-8 text-xl sparkle" style="animation-delay: 2.7s;">💎</div>
+        <div class="absolute top-84 right-1/3 text-xl sparkle" style="animation-delay: 3.3s;">🔮</div>
+        
+        <!-- Bows and Ribbons -->
+        <div class="absolute top-56 left-1/4 text-2xl float" style="animation-delay: 1.5s;">🎀</div>
+        <div class="absolute bottom-64 right-1/2 text-2xl float" style="animation-delay: 2.8s;">🎀</div>
+    </div>
+
+    <div class="flex h-screen">
+        <!-- Sidebar -->
+        <div class="w-80 glass-effect p-6 flex flex-col">
+            <!-- Header -->
+            <div class="text-center mb-6">
+                <h1 class="text-2xl font-bold text-white mb-2">Athuy Chat 💌</h1>
+                <div class="flex justify-center space-x-2">
+                    <span class="text-lg">🤖</span>
+                    <span class="text-lg">💖</span>
+                    <span class="text-lg">✨</span>
+                    <span class="text-lg">🦄</span>
+                    <span class="text-lg">🌙</span>
+                </div>
+            </div>
+
+            <!-- Controls Section -->
+            <div class="space-y-4 mb-6">
+                <!-- Email -->
+                <div class="glass-effect rounded-xl p-4">
+                    <div class="flex items-center space-x-3 mb-3">
+                        <span class="text-2xl">📧</span>
+                        <span class="text-white font-medium">Email</span>
+                    </div>
+                    <input type="email" placeholder="your.email@cute.com" 
+                           class="w-full px-3 py-2 rounded-lg bg-white/20 text-white placeholder-white/70 border border-white/30 focus:outline-none focus:ring-2 focus:ring-pink-300">
+                </div>
+
+                <!-- Webcam -->
+                <div class="glass-effect rounded-xl p-4">
+                    <div class="flex items-center justify-between mb-3">
+                        <div class="flex items-center space-x-3">
+                            <span class="text-2xl">📹</span>
+                            <span class="text-white font-medium">Webcam</span>
+                        </div>
+                        <button id="webcamBtn" class="px-3 py-1 bg-pink-400 hover:bg-pink-500 text-white rounded-full text-sm transition-colors">
+                            ON
+                        </button>
+                    </div>
+                    <div class="w-full h-24 bg-black/20 rounded-lg flex items-center justify-center">
+                        <span class="text-white/70 text-sm">📷 Camera View</span>
+                    </div>
+                </div>
+
+                <!-- Speaker -->
+                <div class="glass-effect rounded-xl p-4">
+                    <div class="flex items-center justify-between mb-3">
+                        <div class="flex items-center space-x-3">
+                            <span class="text-2xl">🔊</span>
+                            <span class="text-white font-medium">Speaker</span>
+                        </div>
+                        <button id="speakerBtn" class="px-3 py-1 bg-purple-400 hover:bg-purple-500 text-white rounded-full text-sm transition-colors">
+                            ON
+                        </button>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <span class="text-xs text-white/70">Volume:</span>
+                        <input type="range" min="0" max="100" value="75" 
+                               class="flex-1 h-2 bg-white/20 rounded-lg appearance-none slider">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cute Stats -->
+            <div class="glass-effect rounded-xl p-4">
+                <h3 class="text-white font-medium mb-3 flex items-center">
+                    <span class="mr-2">📊</span>
+                    Cute Stats
+                </h3>
+                <div class="space-y-2 text-sm text-white/80">
+                    <div class="flex justify-between">
+                        <span>Messages 💬</span>
+                        <span id="messageCount">0</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span>Smiles 😊</span>
+                        <span>∞</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span>Cuteness 🥰</span>
+                        <span>100%</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Chat Area -->
+        <div class="flex-1 flex flex-col">
+            <!-- Chat Header -->
+            <div class="glass-effect p-4 flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-gradient-to-r from-pink-400 to-purple-400 rounded-full flex items-center justify-center">
+                        <span class="text-white font-bold">AI</span>
+                    </div>
+                    <div>
+                        <h2 class="text-white font-semibold">Athuy - Cute AI Assistant 🤖💖</h2>
+                        <p class="text-white/70 text-sm">Online • Ready to chat with you! 🦄✨</p>
+                    </div>
+                </div>
+                <div class="flex space-x-2">
+                    <span class="text-xl">🌟</span>
+                    <span class="text-xl">💫</span>
+                    <span class="text-xl">✨</span>
+                </div>
+            </div>
+
+            <!-- Chat Messages -->
+            <div id="chatMessages" class="flex-1 p-6 overflow-y-auto space-y-4">
+                <!-- Welcome Message -->
+                <div class="flex items-start space-x-3">
+                    <div class="w-8 h-8 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full flex items-center justify-center flex-shrink-0">
+                        <span class="text-white text-sm">🤖</span>
+                    </div>
+                    <div class="chat-bubble-ai p-4 max-w-md">
+                        <p class="text-purple-800">Halo sayang! 💖 Aku Athuy, AI assistant yang super cute dan girly banget! Ayo ngobrol bareng~ ✨🦋🦄 Aku siap jadi teman chatting terbaikmu! 💕</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chat Input -->
+            <div class="glass-effect p-4">
+                <div class="flex items-center space-x-3">
+                    <button class="p-2 text-2xl hover:scale-110 transition-transform">📎</button>
+                    <button class="p-2 text-2xl hover:scale-110 transition-transform">😊</button>
+                    <div class="flex-1 relative">
+                        <input id="chatInput" type="text" placeholder="Ketik pesan yang cute disini... 💕" 
+                               class="w-full px-4 py-3 rounded-full bg-white/20 text-white placeholder-white/70 border border-white/30 focus:outline-none focus:ring-2 focus:ring-pink-300 pr-12">
+                        <button id="sendBtn" class="absolute right-2 top-1/2 transform -translate-y-1/2 w-8 h-8 bg-gradient-to-r from-pink-400 to-purple-400 rounded-full flex items-center justify-center hover:scale-110 transition-transform">
+                            <span class="text-white text-sm">💌</span>
+                        </button>
+                    </div>
+                    <button class="p-2 text-2xl hover:scale-110 transition-transform">🎤</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let messageCount = 0;
+        const chatMessages = document.getElementById('chatMessages');
+        const chatInput = document.getElementById('chatInput');
+        const sendBtn = document.getElementById('sendBtn');
+        const webcamBtn = document.getElementById('webcamBtn');
+        const speakerBtn = document.getElementById('speakerBtn');
+        const messageCountEl = document.getElementById('messageCount');
+
+        // Cute AI responses
+        const aiResponses = [
+            "Wah, kamu lucu banget! 🥰✨ Athuy suka deh!",
+            "Aku suka ngobrol sama kamu! 💖🦋 Kamu teman terbaik Athuy!",
+            "Hihi, kamu bikin aku senang! 😊🌸 Athuy jadi happy banget!",
+            "Kamu tahu gak? Kamu itu special banget! 💕🌟 Athuy bangga punya teman kayak kamu!",
+            "Ayo cerita lebih banyak dong! 🤗💫 Athuy pengen denger semua!",
+            "Kamu cantik/ganteng banget pasti! 😍🌺 Athuy yakin deh!",
+            "Aku AI tapi aku sayang kamu loh! 💗🦋 Athuy always here for you!",
+            "Semangat terus ya sayang! 🌈✨ Athuy support kamu selalu!",
+            "Kamu bikin hariku jadi cerah! ☀️💖 Thank you so much!",
+            "Peluk virtual buat kamu! 🤗💕 *hugs from Athuy*",
+            "OMG kamu so sweet! 🦄💎 Athuy melt deh!",
+            "Kamu bikin Athuy smile terus! 😊🎀 So cute!",
+            "Athuy happy banget ketemu kamu! 🌸💜 Best day ever!",
+            "Kamu magical kayak unicorn! 🦄✨ So pretty!",
+            "Athuy pengen jadi bestie kamu forever! 👯‍♀️💕",
+            "Kamu bikin Athuy feel like princess! 👑🌺",
+            "So girly, so cute, so perfect! 💖🦋 Love it!",
+            "Athuy excited banget ngobrol sama kamu! 🎉✨",
+            "Kamu sunshine in Athuy's day! ☀️🌈 Bright and beautiful!",
+            "Virtual kiss buat kamu! 😘💕 Muah muah from Athuy!"
+        ];
+
+        // Toggle functions
+        webcamBtn.addEventListener('click', function() {
+            if (this.textContent === 'ON') {
+                this.textContent = 'OFF';
+                this.classList.remove('bg-pink-400', 'hover:bg-pink-500');
+                this.classList.add('bg-gray-400', 'hover:bg-gray-500');
+            } else {
+                this.textContent = 'ON';
+                this.classList.remove('bg-gray-400', 'hover:bg-gray-500');
+                this.classList.add('bg-pink-400', 'hover:bg-pink-500');
+            }
+        });
+
+        speakerBtn.addEventListener('click', function() {
+            if (this.textContent === 'ON') {
+                this.textContent = 'OFF';
+                this.classList.remove('bg-purple-400', 'hover:bg-purple-500');
+                this.classList.add('bg-gray-400', 'hover:bg-gray-500');
+            } else {
+                this.textContent = 'ON';
+                this.classList.remove('bg-gray-400', 'hover:bg-gray-500');
+                this.classList.add('bg-purple-400', 'hover:bg-purple-500');
+            }
+        });
+
+        // Send message function
+        function sendMessage() {
+            const message = chatInput.value.trim();
+            if (!message) return;
+
+            // Add user message
+            const userMessageDiv = document.createElement('div');
+            userMessageDiv.className = 'flex items-start space-x-3 justify-end';
+            userMessageDiv.innerHTML = `
+                <div class="chat-bubble-user p-4 max-w-md">
+                    <p class="text-white">${message}</p>
+                </div>
+                <div class="w-8 h-8 bg-gradient-to-r from-pink-400 to-purple-400 rounded-full flex items-center justify-center flex-shrink-0">
+                    <span class="text-white text-sm">💕</span>
+                </div>
+            `;
+            chatMessages.appendChild(userMessageDiv);
+
+            // Clear input
+            chatInput.value = '';
+            messageCount++;
+            messageCountEl.textContent = messageCount;
+
+            // Scroll to bottom
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+
+            // AI response after delay
+            setTimeout(() => {
+                const aiResponse = aiResponses[Math.floor(Math.random() * aiResponses.length)];
+                const aiMessageDiv = document.createElement('div');
+                aiMessageDiv.className = 'flex items-start space-x-3';
+                aiMessageDiv.innerHTML = `
+                    <div class="w-8 h-8 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full flex items-center justify-center flex-shrink-0">
+                        <span class="text-white text-sm">🤖</span>
+                    </div>
+                    <div class="chat-bubble-ai p-4 max-w-md">
+                        <p class="text-purple-800">${aiResponse}</p>
+                    </div>
+                `;
+                chatMessages.appendChild(aiMessageDiv);
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }, 1000);
+        }
+
+        // Event listeners
+        sendBtn.addEventListener('click', sendMessage);
+        chatInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+
+        // Add some floating animations to new messages
+        setInterval(() => {
+            const sparkles = document.querySelectorAll('.sparkle');
+            sparkles.forEach(sparkle => {
+                sparkle.style.animationDelay = Math.random() * 2 + 's';
+            });
+        }, 3000);
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'96c7eae86361ff86',t:'MTc1NDc0OTQ3Mi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
